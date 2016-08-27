@@ -6,7 +6,7 @@ class CatalogItem extends PureComponent {
     available: PropTypes.integer
   }
 
-  render() {
+  render () {
     return (
       <li className='catalog-item'>
         <span className='catalog-item__name'>{this.props.name}</span>
@@ -15,6 +15,5 @@ class CatalogItem extends PureComponent {
     )
   }
 }
-
 
 export default CatalogItem

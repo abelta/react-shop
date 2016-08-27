@@ -10,10 +10,12 @@
 module.exports = {
   root: true,
 
+  extends: ['eslint:recommended', 'standard', 'standard-react'],
+
   parser: 'babel-eslint',
 
   // import plugin is termporarily disabled, scroll below to see why
-  plugins: [/*'import', */'flowtype', 'jsx-a11y', 'react'],
+  plugins: ['flowtype', 'jsx-a11y', 'react', 'standard', 'promise'],
 
   env: {
     browser: true,
@@ -35,7 +37,7 @@ module.exports = {
   settings: {
     'import/ignore': [
       'node_modules',
-      '\\.(json|css|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm)$',
+      '\\.(json|css|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm)$'
     ],
     'import/extensions': ['.js'],
     'import/resolver': {
@@ -103,7 +105,7 @@ module.exports = {
     'no-restricted-syntax': [
       'warn',
       'LabeledStatement',
-      'WithStatement',
+      'WithStatement'
     ],
     'no-return-assign': 'warn',
     'no-script-url': 'warn',
@@ -128,7 +130,7 @@ module.exports = {
     'no-useless-rename': ['warn', {
       ignoreDestructuring: false,
       ignoreImport: false,
-      ignoreExport: false,
+      ignoreExport: false
     }],
     'no-with': 'warn',
     'no-whitespace-before-property': 'warn',
@@ -171,7 +173,7 @@ module.exports = {
     'react/jsx-no-undef': 'warn',
     'react/jsx-pascal-case': ['warn', {
       allowAllCaps: true,
-      ignore: [],
+      ignore: []
     }],
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
@@ -192,4 +194,4 @@ module.exports = {
     'flowtype/require-valid-file-annotation': 'warn',
     'flowtype/use-flow-type': 'warn'
   }
-};
+}
