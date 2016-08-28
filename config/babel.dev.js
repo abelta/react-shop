@@ -8,7 +8,8 @@ module.exports = {
     // Latest stable ECMAScript features
     require.resolve('babel-preset-latest'),
     // JSX, Flow
-    require.resolve('babel-preset-react')
+    require.resolve('babel-preset-react'),
+    'react', 'es2015', 'stage-0'
   ],
   plugins: [
     // class { handleClick = () => { } }
@@ -27,4 +28,4 @@ module.exports = {
       regenerator: true
     }]
   ]
-};
+}

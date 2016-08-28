@@ -6,6 +6,7 @@ module.exports = {
     require.resolve('babel-preset-latest'),
     // JSX, Flow
     require.resolve('babel-preset-react')
+    // 'react', 'es2015', 'stage-0'
   ],
   plugins: [
     // class { handleClick = () => { } }
@@ -25,5 +26,5 @@ module.exports = {
     }],
     // Optimization: hoist JSX that never changes out of render()
     require.resolve('babel-plugin-transform-react-constant-elements')
-  ],
-};
+  ]
+}
