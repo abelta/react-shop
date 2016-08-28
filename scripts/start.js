@@ -227,13 +227,13 @@ function runDevServer (port) {
       ignored: /node_modules/
     }
   })
-  addMiddleware (devServer)
+  addMiddleware(devServer)
   devServer.listen(port, (err, result) => {
     if (err) {
       return console.log(err)
     }
 
-    clearConsole();
+    clearConsole()
     console.log(chalk.cyan('Starting the development server...'))
     console.log()
     openBrowser(port)
