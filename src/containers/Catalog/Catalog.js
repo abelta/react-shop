@@ -1,8 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import getCatalog from '../../actions/getCatalog'
-import setItemApartFromCatalog from '../../actions/setItemApartFromCatalog'
-import addItemToShoppingCart from '../../actions/addItemToShoppingCart'
+import { getCatalog, setItemApartFromCatalog, addItemToShoppingCart } from '../../actions'
 import CatalogItem from '../../components/CatalogItem'
 import './Catalog.css'
 
@@ -45,11 +43,9 @@ class Catalog extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    catalog: state.catalog
-  }
-}
+const mapStateToProps = (state) => ({
+  catalog: state.catalog
+})
 
 const mapDispatchToProps = { getCatalog, setItemApartFromCatalog, addItemToShoppingCart }
 

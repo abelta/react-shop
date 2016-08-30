@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import reducers from './reducers'
-import accessGlobalStore from './middleware/accessGlobalStore'
+import { accessGlobalStore } from './middleware'
 import App from './App'
 import './index.css'
 

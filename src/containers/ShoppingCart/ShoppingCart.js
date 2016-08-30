@@ -1,5 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { removeItemFromShoppingCart, returnItemToCatalog } from '../../actions'
 import shoppingCartSelector from '../../selectors/ShoppingCartSelector'
 import ShoppingCartItem from '../../components/ShoppingCartItem'
 import ShoppingCartSummary from '../ShoppingCartSummary'
@@ -7,21 +8,34 @@ import './ShoppingCart.css'
 
 class ShoppingCart extends PureComponent {
   static propTypes = {
-    shoppingCartItems: PropTypes.array
+    shoppingCartItems: PropTypes.array,
+    removeItemFromShoppingCart: PropTypes.func,
+    returnItemToCatalog: PropTypes.func
+  }
+
+  constructor (props) {
+    super(props)
+    this.removeItem = this.removeItem.bind(this)
+  }
+
+  removeItem (item) {
+    this.props.removeItemFromShoppingCart(item.id)
+    this.props.returnItemToCatalog(item.id)
   }
 
   render () {
+    const { shoppingCartItems } = this.props
     return (
       <section className='shopping-cart'>
         <header>Shopping cart</header>
         <ul>
-          {this.props.shoppingCartItems.map((item) => (
-            <li>
-              <ShoppingCartItem {...item} />
+          {shoppingCartItems.map((item, i) => (
+            <li key={i}>
+              <ShoppingCartItem {...item} onClick={this.removeItem} />
             </li>
           ))}
         </ul>
-        {this.props.shoppingCartItems.length > 0 && <ShoppingCartSummary />}
+        {shoppingCartItems.length > 0 && <ShoppingCartSummary />}
       </section>
     )
   }
@@ -31,6 +45,6 @@ const mapStateToProps = (state) => ({
   shoppingCartItems: shoppingCartSelector(state)
 })
 
-const mapDispatchToProps = { }
+const mapDispatchToProps = { removeItemFromShoppingCart, returnItemToCatalog }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart)

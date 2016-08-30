@@ -1,6 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import * as consts from '../../constants'
+import PromoTag from '../../components/PromoTag'
 import './ShoppingCartSummary.css'
 
 class ShoppingCartSummary extends PureComponent {
@@ -9,12 +10,29 @@ class ShoppingCartSummary extends PureComponent {
   }
 
   render () {
+    const { shoppingCart } = this.props
     return (
       <section className='shopping-cart__summary'>
-        <p>Subtotal: ${this.props.shoppingCart.subtotal}</p>
-        <p>VAT: ({consts.VAT}%) ${this.props.shoppingCart.vat}</p>
-        <p>Shipping cost: ${this.props.shoppingCart.shippingCost}</p>
-        <p>TOTAL: ${this.props.shoppingCart.total}</p>
+        <p className='shopping-cart__summary__subtotal'>
+          Subtotal: ${shoppingCart.subtotal.value}
+        </p>
+        <p className='shopping-cart__summary_vat'>
+          VAT: ({consts.VAT}%) ${shoppingCart.vat.value}
+        </p>
+        <p className='shopping-cart__item__shipping-cost'>
+          Shipping cost: ${shoppingCart.shippingCost.value}
+          {shoppingCart.shippingCost.promo &&
+            <PromoTag type={shoppingCart.shippingCost.promo}>
+              {shoppingCart.shippingCost.promo}
+            </PromoTag>}
+        </p>
+        <p className='shopping-cart__item__total'>
+          TOTAL: ${shoppingCart.total.value}
+          {shoppingCart.total.promo &&
+            <PromoTag type={shoppingCart.shippingCost.promo}>
+              {shoppingCart.shippingCost.promo}
+            </PromoTag>}
+        </p>
       </section>
     )
   }

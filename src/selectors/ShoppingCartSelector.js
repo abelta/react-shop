@@ -18,25 +18,38 @@ const shoppingCartSelector = createSelector(
 
 const subtotalSelector = createSelector(
   [shoppingCartSelector],
-  (shoppingCartItems) => shoppingCartItems.reduce(
-    (sum, item) => round((sum + item.price * item.quantity), 2)
-    , 0
-  )
+  (shoppingCartItems) => {
+    const sum = shoppingCartItems.reduce(
+      (sum, item) => round((sum + item.price * item.quantity), 2)
+      , 0
+    )
+    return {
+      value: sum < 100 ? sum : sum - sum * 10 / 100,
+      promo: sum < 100 ? null : consts.PROMOS.TEN_PERCENT_DISCOUNT
+    }
+  }
 )
 
 const vatSelector = createSelector(
   [subtotalSelector],
-  (subtotal) => round((subtotal * consts.VAT / 100), 2)
+  (subtotal) => ({
+    value: round((subtotal.value * consts.VAT / 100), 2)
+  })
 )
 
 const shippingCostSelector = createSelector(
   [subtotalSelector],
-  (subtotal) => subtotal < 50 ? consts.SHIPPING_COST : 0
+  (subtotal) => ({
+    value: subtotal.value < 50 ? consts.SHIPPING_COST : 0,
+    promo: subtotal.value < 50 ? null : consts.PROMOS.FREE_SHIPPING
+  })
 )
 
 const shoppingCartTotalSelector = createSelector(
   [subtotalSelector, vatSelector, shippingCostSelector],
-  (subtotal, vat, shippingcost) => round((subtotal + vat + shippingcost), 2)
+  (subtotal, vat, shippingcost) => ({
+    value: round((subtotal.value + vat.value + shippingcost.value), 2)
+  })
 )
 
 export default shoppingCartSelector
