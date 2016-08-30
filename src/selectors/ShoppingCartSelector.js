@@ -6,8 +6,6 @@ const getShoppingCartItems = state => state.shoppingCart.items
 
 const getCatalogItems = state => state.catalog.items
 
-
-
 const shoppingCartSelector = createSelector(
   [getShoppingCartItems, getCatalogItems],
   (shoppingCartItems, catalogItems) => shoppingCartItems.map(
@@ -28,7 +26,7 @@ const subtotalSelector = createSelector(
 
 const vatSelector = createSelector(
   [subtotalSelector],
-  (subtotal) => (subtotal * consts.VAT / 100)
+  (subtotal) => round((subtotal * consts.VAT / 100), 2)
 )
 
 const shippingCostSelector = createSelector(
@@ -38,7 +36,7 @@ const shippingCostSelector = createSelector(
 
 const shoppingCartTotalSelector = createSelector(
   [subtotalSelector, vatSelector, shippingCostSelector],
-  (subtotal, vat, shippingcost) => subtotal + vat + shippingcost
+  (subtotal, vat, shippingcost) => round((subtotal + vat + shippingcost), 2)
 )
 
 export default shoppingCartSelector

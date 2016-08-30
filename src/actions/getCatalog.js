@@ -1,5 +1,6 @@
 import * as types from '../actionTypes'
 import Faker from 'Faker'
+import { round } from '../helpers'
 
 const randomItem = (id) => ({
   id: id,
