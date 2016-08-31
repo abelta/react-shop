@@ -8,5 +8,6 @@ describe('getCatalog', () => {
     const action = getCatalog()
     expect(action.type).to.eql(types.GET_CATALOG)
     expect(action.items).to.be.a('array')
+    expect(action.items[0]).to.have.all.keys('id', 'name', 'price', 'available')
   })
 })

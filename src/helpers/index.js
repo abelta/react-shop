@@ -1,1 +1,1 @@
-export { round } from './round'
+export { default as round } from './round'
