@@ -1,7 +1,7 @@
 import * as types from '../actionTypes'
 import * as consts from '../constants'
 import { subtotalSelector, vatSelector, shippingCostSelector, shoppingCartTotalSelector }
-  from '../selectors/ShoppingCartSelector'
+  from '../selectors/shoppingCartSelector'
 
 const addToCart = (state, id) => {
   let clonedItems = JSON.parse(JSON.stringify(state.items))
@@ -9,10 +9,12 @@ const addToCart = (state, id) => {
   if (index >= 0) {
     let product = clonedItems[index]
     product.quantity++
-    product.promo = new Array(Math.floor(product.quantity / 3)).fill(consts.PROMOS.EXTRA_ITEM)
+    if (product.quantity / 3 > 1) {
+      product.promo = consts.PROMOS.EXTRA_ITEM
+    }
     product.gift = Math.floor(product.quantity / 3)
   } else {
-    clonedItems.push({ id: id, quantity: 1, gift: 0, promo: [ ] })
+    clonedItems.push({ id: id, quantity: 1, gift: 0, promo: null })
   }
   return clonedItems
 }
@@ -24,7 +26,9 @@ const removeFromCart = (state, id) => {
     let product = clonedItems[index]
     if (product.quantity > 1) {
       product.quantity--
-      product.promo = new Array(Math.floor(product.quantity / 3)).fill(consts.PROMOS.EXTRA_ITEM)
+      if (product.quantity / 3) {
+        product.promo = consts.PROMOS.EXTRA_ITEM
+      }
       product.gift = Math.floor(product.quantity / 3)
     } else {
       clonedItems.splice(index, 1)

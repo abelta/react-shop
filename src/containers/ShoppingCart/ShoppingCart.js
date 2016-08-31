@@ -1,7 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { removeItemFromShoppingCart } from '../../actions'
-import shoppingCartSelector from '../../selectors/ShoppingCartSelector'
+import shoppingCartSelector from '../../selectors/shoppingCartSelector'
 import ShoppingCartItem from '../../components/ShoppingCartItem'
 import ShoppingCartSummary from '../ShoppingCartSummary'
 import './ShoppingCart.css'

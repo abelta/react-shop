@@ -1,4 +1,5 @@
 import React, { PureComponent, PropTypes } from 'react'
+import classNames from 'classnames'
 import PromoTag from '../PromoTag'
 import './ShoppingCartItem.css'
 
@@ -7,7 +8,7 @@ class ShoppingCartItem extends PureComponent {
     name: PropTypes.string,
     quantity: PropTypes.number,
     price: PropTypes.number,
-    promo: PropTypes.array,
+    promo: PropTypes.string,
     gift: PropTypes.number,
     onClick: PropTypes.func
   }
@@ -23,14 +24,25 @@ class ShoppingCartItem extends PureComponent {
 
   render () {
     return (
-      <span className='shopping-cart__item' onClick={this.onClick}>
-        <span className='shopping-cart__item__name'>{this.props.name}</span>
-        <span className='shopping-cart__item__quantity'>{this.props.quantity}</span>
-        {this.props.gift.length > 0 &&
+      <article className={classNames('shopping-cart__item', 'active')}
+        onClick={this.onClick}>
+        <span className='shopping-cart__item__name'>
+          {this.props.name}
+        </span>
+        <span className='shopping-cart__item__quantity'>
+          {this.props.quantity - this.props.gift}
+        </span>
+        {this.props.gift > 0 &&
           <span className='shopping-cart__item__gift'>+{this.props.gift}</span>}
-        <span className='shopping-cart__item__cost'>${this.props.quantity * this.props.price}</span>
-        {this.props.promo.map((promo, i) => <PromoTag key={i} type={promo}>{promo}</PromoTag>)}
-      </span>
+        <span className='shopping-cart__item__cost'>
+          ${(this.props.quantity - this.props.gift) * this.props.price}
+        </span>
+        {this.props.gift > 0 &&
+          <PromoTag type={this.props.promo}>{this.props.promo}</PromoTag>}
+        <span className='shopping-cart__item__remove-message'>
+          Click to remove
+        </span>
+      </article>
     )
   }
 }

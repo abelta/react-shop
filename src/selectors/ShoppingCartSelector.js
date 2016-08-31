@@ -20,7 +20,7 @@ const subtotalSelector = createSelector(
   [shoppingCartSelector],
   (shoppingCartItems) => {
     const sum = shoppingCartItems.reduce(
-      (sum, item) => round((sum + item.price * item.quantity), 2)
+      (sum, item) => round((sum + item.price * (item.quantity - item.gift)), 2)
       , 0
     )
     return {
