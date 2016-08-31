@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { removeItemFromShoppingCart, returnItemToCatalog } from '../../actions'
+import { removeItemFromShoppingCart } from '../../actions'
 import shoppingCartSelector from '../../selectors/ShoppingCartSelector'
 import ShoppingCartItem from '../../components/ShoppingCartItem'
 import ShoppingCartSummary from '../ShoppingCartSummary'
@@ -9,8 +9,7 @@ import './ShoppingCart.css'
 class ShoppingCart extends PureComponent {
   static propTypes = {
     shoppingCartItems: PropTypes.array,
-    removeItemFromShoppingCart: PropTypes.func,
-    returnItemToCatalog: PropTypes.func
+    removeItemFromShoppingCart: PropTypes.func
   }
 
   constructor (props) {
@@ -20,7 +19,6 @@ class ShoppingCart extends PureComponent {
 
   removeItem (item) {
     this.props.removeItemFromShoppingCart(item.id)
-    this.props.returnItemToCatalog(item.id)
   }
 
   render () {
@@ -45,6 +43,6 @@ const mapStateToProps = (state) => ({
   shoppingCartItems: shoppingCartSelector(state)
 })
 
-const mapDispatchToProps = { removeItemFromShoppingCart, returnItemToCatalog }
+const mapDispatchToProps = { removeItemFromShoppingCart }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart)

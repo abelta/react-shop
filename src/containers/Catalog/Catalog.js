@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { getCatalog, setItemApartFromCatalog, addItemToShoppingCart } from '../../actions'
+import { getCatalog, addItemToShoppingCart } from '../../actions'
 import CatalogItem from '../../components/CatalogItem'
 import './Catalog.css'
 
@@ -8,8 +8,7 @@ class Catalog extends PureComponent {
   static propTypes = {
     getCatalog: PropTypes.func,
     catalog: PropTypes.object,
-    addItemToShoppingCart: PropTypes.func,
-    setItemApartFromCatalog: PropTypes.func
+    addItemToShoppingCart: PropTypes.func
   }
 
   constructor (props) {
@@ -23,7 +22,6 @@ class Catalog extends PureComponent {
 
   addToShoppingCart (item) {
     if (item.available > 0) {
-      this.props.setItemApartFromCatalog(item.id)
       this.props.addItemToShoppingCart(item.id)
     }
   }
@@ -47,6 +45,6 @@ const mapStateToProps = (state) => ({
   catalog: state.catalog
 })
 
-const mapDispatchToProps = { getCatalog, setItemApartFromCatalog, addItemToShoppingCart }
+const mapDispatchToProps = { getCatalog, addItemToShoppingCart }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog)
