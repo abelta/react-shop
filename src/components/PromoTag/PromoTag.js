@@ -10,7 +10,7 @@ class PromoTag extends PureComponent {
 
   render () {
     return (
-      <span className={classNames('PromoTag', this.props.type)}>
+      <span className={classNames('promo-tag', this.props.type)}>
         {this.props.children}
       </span>
     )
