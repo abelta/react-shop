@@ -26,7 +26,7 @@ class ShoppingCart extends PureComponent {
     return (
       <section className='shopping-cart'>
         <header>Shopping cart</header>
-        <ul>
+        <ul className='shopping-cart__list'>
           {shoppingCartItems.map((item, i) => (
             <li key={i}>
               <ShoppingCartItem {...item} onClick={this.removeItem} />
@@ -46,3 +46,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = { removeItemFromShoppingCart }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart)
+export { ShoppingCart as ShoppingCartRaw }

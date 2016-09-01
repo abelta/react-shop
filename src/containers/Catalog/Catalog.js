@@ -30,7 +30,7 @@ class Catalog extends PureComponent {
     return (
       <nav className='catalog'>
         <header>Catalog</header>
-        <ul>
+        <ul className='catalog__list'>
           {this.props.catalog.items.map((item) => (
             <li key={item.id}>
               <CatalogItem {...item} onClick={this.addToShoppingCart} />
