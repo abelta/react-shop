@@ -8,7 +8,9 @@ export default function catalogReducer (state = { items: [ ] }, action) {
     case types.ADD_ITEM_TO_SHOPPING_CART: {
       let clonedItems = JSON.parse(JSON.stringify(state.items))
       const index = clonedItems.findIndex((elem) => elem.id === action.id)
-      clonedItems[index].available--
+      if (clonedItems[index].available > 0) {
+        clonedItems[index].available--
+      }
       return { items: clonedItems }
     }
     case types.REMOVE_ITEM_FROM_SHOPPING_CART: {
