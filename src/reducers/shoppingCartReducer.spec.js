@@ -169,18 +169,30 @@ describe('shoppingCartReducer', () => {
     describe('it is enough to opt out of a 3x2 discount', () => {
       const action = {
         type: types.REMOVE_ITEM_FROM_SHOPPING_CART,
-        id: 1,
+        id: 3,
         getState: () => globalState
       }
 
       it('removes one from quantity and one from gift', () => {
         const items = shoppingCartReducer(state, action).items
-        const item = items[0]
+        const item = items[2]
         expect(item.quantity).to.eql(2)
         expect(item.gift).to.eql(0)
       })
 
-      it('updates summary')
+      it('updates summary', () => {
+        const expectedSummary = {
+          subtotal: { value: 144, promo: consts.PROMOS.TEN_PERCENT_DISCOUNT },
+          vat: { value: 23.04 },
+          shippingCost: { value: 0, promo: consts.PROMOS.FREE_SHIPPING },
+          total: { value: 167.04 }
+        }
+        const summary = shoppingCartReducer(state, action)
+        expect(summary.subtotal).to.eql(expectedSummary.subtotal)
+        expect(summary.vat).to.eql(expectedSummary.vat)
+        expect(summary.shippingCost).to.eql(expectedSummary.shippingCost)
+        expect(summary.total).to.eql(expectedSummary.total)
+      })
     })
   })
 })
