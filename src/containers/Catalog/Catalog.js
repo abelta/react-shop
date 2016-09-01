@@ -48,3 +48,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = { getCatalog, addItemToShoppingCart }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog)
+export { Catalog as CatalogRaw }
