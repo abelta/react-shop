@@ -1,3 +1,13 @@
 .shopping-cart__item {
   cursor: pointer;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+.shopping-cart__item__name {
+  margin-right: 8px;
+}
+
+.shopping-cart__item__cost {
+  margin-left: 8px;
 }

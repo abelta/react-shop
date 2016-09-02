@@ -1,3 +1,7 @@
-.shopping-cart {
-  width: 40%;
+.shopping-cart__title {
+  padding-bottom: 40px;
+}
+
+.shopping-cart__list {
+  list-style: none;
 }

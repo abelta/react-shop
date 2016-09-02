@@ -24,7 +24,7 @@ const subtotalSelector = createSelector(
       , 0
     )
     return {
-      value: sum < 100 ? sum : sum - (sum * 10 / 100),
+      value: sum < 100 ? sum : round((sum - (sum * 10 / 100)), 2),
       promo: sum < 100 ? null : consts.PROMOS.TEN_PERCENT_DISCOUNT
     }
   }

@@ -5,6 +5,8 @@ import { Provider } from 'react-redux'
 import reducers from './reducers'
 import { accessGlobalStore } from './middleware'
 import App from './App'
+import './styles/normalize.css'
+import './styles/skeleton.css'
 import './index.css'
 
 let store = createStore(

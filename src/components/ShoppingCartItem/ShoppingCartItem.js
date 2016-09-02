@@ -1,5 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react'
 import classNames from 'classnames'
+import { round } from '../../helpers'
 import PromoTag from '../PromoTag'
 import './ShoppingCartItem.css'
 
@@ -35,13 +36,10 @@ class ShoppingCartItem extends PureComponent {
         {this.props.gift > 0 &&
           <span className='shopping-cart__item__gift'>+{this.props.gift}</span>}
         <span className='shopping-cart__item__cost'>
-          ${(this.props.quantity - this.props.gift) * this.props.price}
+          ${round(((this.props.quantity - this.props.gift) * this.props.price), 2)}
         </span>
         {this.props.gift > 0 &&
           <PromoTag type={this.props.promo}>{this.props.promo}</PromoTag>}
-        <span className='shopping-cart__item__remove-message'>
-          Click to remove
-        </span>
       </article>
     )
   }

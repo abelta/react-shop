@@ -1,3 +1,29 @@
+.catalog-item {
+  font-size: 18px;
+  font-weight: lighter;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  color: grey;
+}
+
 .catalog-item.active {
   cursor: pointer;
+  border-color: lightblue;
+}
+
+.catalog-item__header {
+  background-color: lightgrey;
+  color: white;
+}
+
+.catalog-item.active .catalog-item__header {
+  background-color: lightblue;
+}
+
+.catalog-item__price {
+  margin-right: 8px;
+}
+
+.catalog-item__available {
+  margin-left: 8px;
 }

@@ -1,6 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { getCatalog, addItemToShoppingCart } from '../../actions'
+import classNames from 'classnames'
 import CatalogItem from '../../components/CatalogItem'
 import './Catalog.css'
 
@@ -8,6 +9,7 @@ class Catalog extends PureComponent {
   static propTypes = {
     getCatalog: PropTypes.func,
     catalog: PropTypes.object,
+    className: PropTypes.string,
     addItemToShoppingCart: PropTypes.func
   }
 
@@ -28,8 +30,10 @@ class Catalog extends PureComponent {
 
   render () {
     return (
-      <nav className='catalog'>
-        <header>Catalog</header>
+      <nav className={classNames('catalog', this.props.className)}>
+        <header>
+          <h2 className='catalog__title'>Catalog</h2>
+        </header>
         <ul className='catalog__list'>
           {this.props.catalog.items.map((item) => (
             <li key={item.id}>

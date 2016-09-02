@@ -24,9 +24,11 @@ class CatalogItem extends PureComponent {
       <article
         className={classNames('catalog-item', { 'active': this.props.available > 0 })}
         onClick={this.onClick}>
-        <span className='catalog-item__name'>{this.props.name}</span>
+        <header className='catalog-item__header'>
+          <span className='catalog-item__name'>{this.props.name}</span>
+        </header>
         <span className='catalog-item__price'>${this.props.price}</span>
-        <span className='catalog-item__available'>{this.props.available}</span>
+        <span className='catalog-item__available'>{this.props.available} available</span>
       </article>
     )
   }

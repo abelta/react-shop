@@ -1,7 +1,7 @@
-.catalog {
-  width: 40%;
+.catalog__title {
+  padding-bottom: 40px;
 }
 
-.catalog ul {
+.catalog__list {
   list-style: none;
 }

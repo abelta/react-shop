@@ -9,7 +9,7 @@ const addToCart = (state, id) => {
   if (index >= 0) {
     let product = clonedItems[index]
     product.quantity++
-    if (product.quantity / 3 > 1) {
+    if (product.quantity / 3 >= 1) {
       product.promo = consts.PROMOS.EXTRA_ITEM
     }
     product.gift = Math.floor(product.quantity / 3)

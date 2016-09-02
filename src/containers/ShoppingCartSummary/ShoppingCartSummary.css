@@ -1,0 +1,23 @@
+.shopping-cart__summary {
+  font-size: 18px;
+  font-weight: lighter;
+  border-top: 1px solid grey;
+  padding-top: 14px !important;
+}
+
+.shopping-cart__summary p {
+  padding: 0;
+  margin: 4px;
+}
+
+.shopping-cart__summary .category {
+  text-align: right;
+}
+
+.shopping-cart__summary .value {
+  text-align: left;
+}
+
+.shopping-cart__summary__total {
+  font-weight: bold;
+}

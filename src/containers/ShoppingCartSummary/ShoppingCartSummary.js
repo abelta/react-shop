@@ -12,26 +12,40 @@ class ShoppingCartSummary extends PureComponent {
   render () {
     const { shoppingCart } = this.props
     return (
-      <section className='shopping-cart__summary'>
-        <p className='shopping-cart__summary__subtotal'>
-          Subtotal: ${shoppingCart.subtotal.value}
+      <section className='shopping-cart__summary container'>
+        <p className='shopping-cart__summary__subtotal row'>
+          <span className='category six columns'>Subtotal:</span>
+          <span className='value six columns'>
+            ${shoppingCart.subtotal.value}
+            {shoppingCart.subtotal.promo &&
+              <PromoTag type={shoppingCart.subtotal.promo}>
+                {shoppingCart.subtotal.promo}
+              </PromoTag>}
+          </span>
         </p>
-        <p className='shopping-cart__summary__vat'>
-          VAT: ({consts.VAT}%) ${shoppingCart.vat.value}
+        <p className='shopping-cart__summary__vat row'>
+          <span className='category six columns'>VAT ({consts.VAT}%):</span>
+          <span className='value six columns'>${shoppingCart.vat.value}</span>
         </p>
-        <p className='shopping-cart__summary__shipping-cost'>
-          Shipping cost: ${shoppingCart.shippingCost.value}
-          {shoppingCart.shippingCost.promo &&
-            <PromoTag type={shoppingCart.shippingCost.promo}>
-              {shoppingCart.shippingCost.promo}
-            </PromoTag>}
+        <p className='shopping-cart__summary__shipping-cost row'>
+          <span className='category six columns'>Shipping cost:</span>
+          <span className='value six columns'>
+            ${shoppingCart.shippingCost.value}
+            {shoppingCart.shippingCost.promo &&
+              <PromoTag type={shoppingCart.shippingCost.promo}>
+                {shoppingCart.shippingCost.promo}
+              </PromoTag>}
+          </span>
         </p>
-        <p className='shopping-cart__summary__total'>
-          TOTAL: ${shoppingCart.total.value}
-          {shoppingCart.total.promo &&
-            <PromoTag type={shoppingCart.shippingCost.promo}>
-              {shoppingCart.shippingCost.promo}
-            </PromoTag>}
+        <p className='shopping-cart__summary__total row'>
+          <span className='category six columns'>TOTAL:</span>
+          <span className='value six columns'>
+            ${shoppingCart.total.value}
+            {shoppingCart.total.promo &&
+              <PromoTag type={shoppingCart.shippingCost.promo}>
+                {shoppingCart.shippingCost.promo}
+              </PromoTag>}
+          </span>
         </p>
       </section>
     )

@@ -7,14 +7,16 @@ import './App.css'
 class App extends Component {
   render () {
     return (
-      <div className='App'>
-        <div className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h2>React Shop</h2>
-        </div>
-        <Catalog />
-        <ShoppingCart />
-      </div>
+      <section className='app container'>
+        <header className='app-header row'>
+          <img src={logo} className='app-logo' alt='logo' />
+          <h1 className='app-title'>React Shop</h1>
+        </header>
+        <section className='row'>
+          <Catalog className='six columns' />
+          <ShoppingCart className='six columns' />
+        </section>
+      </section>
     )
   }
 }
