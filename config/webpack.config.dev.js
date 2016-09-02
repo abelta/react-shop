@@ -85,7 +85,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: [paths.appSrc]
+        include: paths.appSrc
       }
     ],
     loaders: [

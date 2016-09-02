@@ -76,9 +76,8 @@
   "scripts": {
     "start": "node ./scripts/start.js",
     "build": "node ./scripts/build.js",
-    "eslint": "eslint .",
-    "linter": "eslint .",
-    "test": "NODE_ENV='test' mocha \"src/**/*.spec.js\"  --compilers babel-core/register --require ./config/jsdom.config.js"
+    "lint": "eslint .",
+    "test": "mocha \"src/**/*.spec.js\"  --compilers babel-core/register --require ./config/jsdom.config.js"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"

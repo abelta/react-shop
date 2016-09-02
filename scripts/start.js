@@ -147,7 +147,7 @@ function openBrowser (port) {
       execSync('ps cax | grep "Google Chrome"')
       execSync(
         'osascript chrome.applescript http://localhost:' + port + '/',
-        {cwd: path.join(__dirname, 'utils'), stdio: 'ignore'}
+        { cwd: path.join(__dirname, 'utils'), stdio: 'ignore' }
       )
       return
     } catch (err) {

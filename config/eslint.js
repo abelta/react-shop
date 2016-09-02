@@ -10,7 +10,7 @@
 module.exports = {
   root: true,
 
-  extends: ['standard', 'standard-react'],
+  // extends: ['standard', 'standard-react'],
 
   parser: 'babel-eslint',
 
@@ -51,9 +51,9 @@ module.exports = {
   rules: {
     // http://eslint.org/docs/rules/
     'no-console': 'off',
-    'max-statements': ['error', 16],
+    'max-statements': ['error', 50],
     'max-depth': ['error', 4],
-    'max-len': ['error', 100],
+    'max-len': ['error', 150],
     'object-curly-spacing': ['error', 'always'],
     'array-callback-return': 'warn',
     'default-case': ['warn', { commentPattern: '^no default$' }],

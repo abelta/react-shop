@@ -30,7 +30,7 @@ describe('CatalogItem', () => {
       const wrapper = shallow(<CatalogItem name='testname' price={100} available={10} />)
       const availableElement = wrapper.find('.catalog-item__available')
       expect(availableElement).to.have.length(1)
-      expect(availableElement.text()).to.equal('10')
+      expect(availableElement.text()).to.include('10')
     })
   })
 
