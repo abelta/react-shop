@@ -11,7 +11,11 @@ const shoppingCartSelector = createSelector(
   (shoppingCartItems, catalogItems) => shoppingCartItems.map(
     shoppingCartItem => {
       const index = catalogItems.findIndex((catalogItem) => catalogItem.id === shoppingCartItem.id)
-      return Object.assign(shoppingCartItem, catalogItems[index])
+      const promos = {
+        promo: () => (shoppingCartItem.quantity / 3) && consts.PROMOS.EXTRA_ITEM,
+        gift: Math.floor(shoppingCartItem.quantity / 3)
+      }
+      return Object.assign(shoppingCartItem, catalogItems[index], promos)
     }
   )
 )
