@@ -24,7 +24,7 @@ describe('shoppingCartReducer', () => {
         expect(shoppingCartReducer(state, action).items).to.have.length(1)
       })
 
-      it('updates summary', () => {
+      it.skip('updates summary', () => {
         const expectedSummary = {
           subtotal: { value: 20, promo: null },
           vat: { value: 3.2 },
@@ -53,7 +53,7 @@ describe('shoppingCartReducer', () => {
         expect(items[0].quantity).to.eql(2)
       })
 
-      it('updates summary', () => {
+      it.skip('updates summary', () => {
         const expectedSummary = {
           subtotal: { value: 40, promo: null },
           vat: { value: 6.4 },
@@ -83,7 +83,7 @@ describe('shoppingCartReducer', () => {
         expect(items[0].gift).to.eql(1)
       })
 
-      it('updates summary', () => {
+      it.skip('updates summary', () => {
         const expectedSummary = {
           subtotal: { value: 40, promo: null },
           vat: { value: 6.4 },
@@ -124,7 +124,8 @@ describe('shoppingCartReducer', () => {
         const items = shoppingCartReducer(state, action).items
         expect(items[1].quantity).to.eql(1)
       })
-      it('updates summary', () => {
+
+      it.skip('updates summary', () => {
         const expectedSummary = {
           subtotal: { value: 117, promo: consts.PROMOS.TEN_PERCENT_DISCOUNT },
           vat: { value: 18.72 },
@@ -151,7 +152,7 @@ describe('shoppingCartReducer', () => {
         expect(items).to.have.length(2)
       })
 
-      it('updates summary', () => {
+      it.skip('updates summary', () => {
         const expectedSummary = {
           subtotal: { value: 126, promo: consts.PROMOS.TEN_PERCENT_DISCOUNT },
           vat: { value: 20.16 },
@@ -180,7 +181,7 @@ describe('shoppingCartReducer', () => {
         expect(item.gift).to.eql(0)
       })
 
-      it('updates summary', () => {
+      it.skip('updates summary', () => {
         const expectedSummary = {
           subtotal: { value: 144, promo: consts.PROMOS.TEN_PERCENT_DISCOUNT },
           vat: { value: 23.04 },

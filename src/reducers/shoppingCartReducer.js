@@ -1,7 +1,5 @@
 import * as types from '../actionTypes'
 import * as consts from '../constants'
-import { subtotalSelector, vatSelector, shippingCostSelector, shoppingCartTotalSelector }
-  from '../selectors/shoppingCartSelector'
 
 const addToCart = (state, id) => {
   let clonedItems = JSON.parse(JSON.stringify(state.items))
@@ -43,25 +41,13 @@ export default function shoppingCartReducer (state = { items: [ ] }, action) {
       let clonedItems = addToCart(state, action.id)
       const prevState = action.getState()
       prevState.shoppingCart.items = clonedItems
-      return {
-        items: clonedItems,
-        subtotal: subtotalSelector(prevState),
-        vat: vatSelector(prevState),
-        shippingCost: shippingCostSelector(prevState),
-        total: shoppingCartTotalSelector(prevState)
-      }
+      return { items: clonedItems }
     }
     case types.REMOVE_ITEM_FROM_SHOPPING_CART: {
       const clonedItems = removeFromCart(state, action.id)
       const prevState = action.getState()
       prevState.shoppingCart.items = clonedItems
-      return {
-        items: clonedItems,
-        subtotal: subtotalSelector(prevState),
-        vat: vatSelector(prevState),
-        shippingCost: shippingCostSelector(prevState),
-        total: shoppingCartTotalSelector(prevState)
-      }
+      return { items: clonedItems }
     }
     default: {
       return state

@@ -5,11 +5,7 @@ import { expect } from 'chai'
 import { ShoppingCartSummaryRaw as ShoppingCartSummary } from './ShoppingCartSummary'
 
 describe('ShoppingCartSummary', () => {
-  const shoppingCart = {
-    items: [
-      { id: 1, quantity: 1, gift: 0 },
-      { id: 2, quantity: 3, gift: 1 }
-    ],
+  const state = {
     subtotal: { value: 40, promo: null },
     vat: { value: 6.4 },
     shippingCost: { value: 9.75, promo: null },
@@ -17,7 +13,7 @@ describe('ShoppingCartSummary', () => {
   }
 
   describe('render', () => {
-    const wrapper = shallow(<ShoppingCartSummary shoppingCart={shoppingCart} />)
+    const wrapper = shallow(<ShoppingCartSummary {...state} />)
 
     it('renders', () => {
       expect(wrapper.is('.shopping-cart__summary'))
